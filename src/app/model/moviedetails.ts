@@ -12,4 +12,5 @@ export class moviedetails{
     country : string;
     awards : string;
     poster : string;
+    imdbID : string;
 }

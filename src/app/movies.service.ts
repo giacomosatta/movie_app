@@ -50,6 +50,16 @@ export class MoviesService {
     );
   }
 
+  imdbID
+
+  getMovie(imdbID: string): Observable<Movie> {
+    const url = `${this.moviesUrl}/${imdbID}`;
+    return this.http.get<Movie>(url).pipe(
+      tap(_ => this.log(`fetched movie imdbID=${imdbID}`)),
+      catchError(this.handleError<Movie>(`getMovie imdbID=${imdbID}`))
+    );
+  }
+
 
 
 }
