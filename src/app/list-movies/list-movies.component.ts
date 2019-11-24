@@ -8,7 +8,8 @@ import { MoviesService } from '../movies.service';
 })
 export class ListMoviesComponent implements OnInit {
 
-  movies : Movie[]
+  movies : Movie [];
+
   constructor(
     private movieService : MoviesService
   ) { }

@@ -50,7 +50,6 @@ export class MoviesService {
     );
   }
 
-  imdbID
 
   getMovie(imdbID: string): Observable<Movie> {
     const url = `${this.moviesUrl}/${imdbID}`;
