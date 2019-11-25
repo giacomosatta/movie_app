@@ -9,6 +9,10 @@ import { MessageService } from './message.service';
 })
 export class MoviesService {
   private moviesUrl = 'http://www.omdbapi.com/?s=terminator&apikey=103f94fb';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type':'application/json'})
+  }
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
@@ -47,6 +51,7 @@ export class MoviesService {
       .pipe(
         tap(_ => this.log('Fetched Movies')),
         catchError(this.handleError<Movie[]>('getMovies', []))
+        
     );
   }
 

@@ -20,6 +20,7 @@ export class ListMoviesComponent implements OnInit {
   getMovies(): void {
     this.movieService.getMovies()
     .subscribe(movies => this.movies = movies);
+    console.log('PROVA: ' + this.movies)
   }
 
 
