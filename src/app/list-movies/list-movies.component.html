@@ -1,19 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Genre</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor = "let movie of movies">
+            <td [class.selected]="movie === selectedMovie"
+            (click)="onSelect(movie)">{{movie.Title}}</td>
+            <td>{{movie.Year}}</td>
+            <td><img src={{movie.Poster}} height="40"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm">
+      <app-detail-movie [movie] = "selectedMovie"></app-detail-movie>
+    </div>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Genre</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody >
-    <tr *ngFor = "let movie of movies">
-      <td [class.selected]="movie === selectedMovie"
-      (click)="onSelect(movie)">{{movie.Title}}</td>
-      <td>{{movie.Year}}</td>
-      <td><img src={{movie.Poster}} height="40"></td>
-    </tr>
-  </tbody>
-</table>
+
 

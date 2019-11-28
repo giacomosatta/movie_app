@@ -34,10 +34,6 @@ export class ListMoviesComponent implements OnInit {
   // CurrentMovieDetail è il parametro di input del componente MovieDetail
   onSelect(movie : Movie):void {
     this.selectedMovie =  movie;
-    console.log(movie.imdbID);
-    this.movieService.getMovie(movie.imdbID);
-    console.log(this.selectedMovie)
-
   }
 
 

@@ -2,3 +2,7 @@ h1{
     color:#fff;
     text-emphasis: emp;
 }
+.container{
+    width: 100%;
+    height: 100%;
+}

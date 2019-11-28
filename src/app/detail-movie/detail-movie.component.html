@@ -1,19 +1,18 @@
 
-  <div class="row" *ngIf="movie">
+  <div *ngIf="movie" class="row">
     <div class="col-6"> <img
-        src="https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"
+        src={{movie.Poster}}
         class="card-img-top" alt="..."></div>
     <div class="col-6">
         <h5 class="card-title">{{movie.Title | uppercase}} Details</h5>
-        <label>Title: {{movie.Title}}> </label><br>
-        <label>Year: 2012 </label><br>
-        <label>Rated: 8/10 </label><br>
-        <label>Genre: Childre, Adventure </label><br>
-        <label>Director: JK Rowling </label><br>
-        <label>Actors: Daniel RActfille, Edd Sheran </label><br>
-        <label>Plot: Tutti maghi volano ciao </label><br>
-        <label>Language: Italian </label><br>
-        <label>Awards: 4 </label><br>
+        <label><strong>Title:</strong> {{movie.Title}} </label><br>
+        <label><strong>Year:</strong> {{movie.Year}} </label><br>
+        <label><strong>Genre:</strong> {{movie.Genre}} </label><br>
+        <label><strong>Director:</strong> {{movie.Director}} </label><br>
+        <label><strong>Actors:</strong> {{movie.Actors}} </label><br>
+        <label><strong>Plot:</strong> {{movie.Plot}} </label><br>
+        <label><strong>Language:</strong> {{movie.Language}} </label><br>
+        <label><strong>Awards: </strong>{{movie.Awards}} </label><br>
       </div>
     </div>
 

@@ -11,6 +11,7 @@ import { MessageService } from './message.service';
 
 export class MoviesService {
   private moviesUrl = 'http://www.omdbapi.com/?s=terminator&apikey=103f94fb';
+  private moviedet = 'http://www.omdbapi.com/?apikey=103f94fb&i='
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
@@ -54,11 +55,11 @@ export class MoviesService {
     );
   }
 
-  getMovie(imdbID: string): Observable<any> {
-    const url = `${this.moviesUrl}/${imdbID}`;
-    return this.http.get<any>(url).pipe(
+  getMovie(imdbID: string): Observable<Movie> {
+    const url = `${this.moviedet}${imdbID}`;
+    return this.http.get<Movie>(url).pipe(
       tap(_ => this.log(`fetched movie imdbID=${imdbID}`)),
-      catchError(this.handleError<any>(`getMovie imdbID=${imdbID}`))
+      catchError(this.handleError<Movie>(`getMovie imdbID=${imdbID}`))
     );
   }
 
