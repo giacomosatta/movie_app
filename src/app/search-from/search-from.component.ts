@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-from.component.css']
 })
 export class SearchFromComponent implements OnInit {
+  searchTerms : string;
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  search(term:string):void{
+    this.searchTerms = term;
   }
 
 }

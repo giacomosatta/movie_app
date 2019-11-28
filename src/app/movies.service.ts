@@ -10,11 +10,10 @@ import { MessageService } from './message.service';
 })
 
 export class MoviesService {
-  private moviesUrl = 'http://www.omdbapi.com/?s=terminator&apikey=103f94fb';
-  private moviedet = 'http://www.omdbapi.com/?apikey=103f94fb&i='
+  private moviedet = 'http://www.omdbapi.com/?apikey=103f94fb&'
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type':'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   constructor(
@@ -45,18 +44,22 @@ export class MoviesService {
       return of(result as T);
     };
   }
-  
+
   getMovies(title?: string): Observable<any> {
-    return this.http.get<any>(this.moviesUrl)
+    if (!title.trim()) {
+      return of({})
+    }
+    const url = `${this.moviedet}s=${title}`;
+    return this.http.get<any>(url)
       .pipe(
         tap(_ => this.log('Fetched Movies')),
         catchError(this.handleError<any>('getMovies', []))
-        
-    );
+
+      );
   }
 
   getMovie(imdbID: string): Observable<Movie> {
-    const url = `${this.moviedet}${imdbID}`;
+    const url = `${this.moviedet}i=${imdbID}`;
     return this.http.get<Movie>(url).pipe(
       tap(_ => this.log(`fetched movie imdbID=${imdbID}`)),
       catchError(this.handleError<Movie>(`getMovie imdbID=${imdbID}`))

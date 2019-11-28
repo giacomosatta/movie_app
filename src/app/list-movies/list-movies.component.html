@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm">
       <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark" *ngIf="movies">
           <tr>
             <th scope="col">Title</th>
             <th scope="col">Genre</th>
@@ -10,12 +10,12 @@
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor = "let movie of movies">
-            <td [class.selected]="movie === selectedMovie"
-            (click)="onSelect(movie)">{{movie.Title}}</td>
-            <td>{{movie.Year}}</td>
-            <td><img src={{movie.Poster}} height="40"></td>
-          </tr>
+            <tr *ngFor = "let movie of movies">
+              <td [class.selected]="movie === selectedMovie"
+              (click)="onSelect(movie)">{{movie.Title}}</td>
+              <td>{{movie.Year}}</td>
+              <td><img src={{movie.Poster}} height="40"></td>
+            </tr>
         </tbody>
       </table>
     </div>
