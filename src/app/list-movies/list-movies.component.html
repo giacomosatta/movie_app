@@ -4,20 +4,15 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Genre</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody >
-    <tr>
-      <td>{{movies.title}}</td>
-      <td>Action</td>
-    </tr>
-    <tr>
-      <td>AmericanPie</td>
-      <td>Commedian</td>
-    </tr>
-    <tr>
-      <td>Harry Potter</td>
-      <td>Children</td>
+    <tr *ngFor = "let movie of movies">
+      <td [class.selected]="movie === selectedMovie"
+      (click)="onSelect(movie)">{{movie.Title}}</td>
+      <td>{{movie.Year}}</td>
+      <td><img src={{movie.Poster}} height="40"></td>
     </tr>
   </tbody>
 </table>

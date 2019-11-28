@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../model/movie'
+import { Movie } from '../movie'
 import { MoviesService } from '../movies.service';
+import { stringify } from 'querystring';
+
 @Component({
   selector: 'app-list-movies',
   templateUrl: './list-movies.component.html',
@@ -8,7 +10,9 @@ import { MoviesService } from '../movies.service';
 })
 export class ListMoviesComponent implements OnInit {
 
-  movies : Movie [];
+  movies : Movie[];
+  selectedMovie : Movie;
+  currentMovieDetail : Movie;
 
   constructor(
     private movieService : MoviesService
@@ -17,12 +21,24 @@ export class ListMoviesComponent implements OnInit {
   ngOnInit() {
     this.getMovies();
   }
+
   getMovies(): void {
     this.movieService.getMovies()
-    .subscribe(movies => this.movies = movies);
-    console.log('PROVA: ' + this.movies)
+    .subscribe(result => this.movies = result.Search);
   }
 
+
+  // Un metodo al click
+  // Prendo l' imdbID del selectedMovie
+  // Chiamo il servizio .getMovie(imdbID) il risultato va in currentMovieDetail
+  // CurrentMovieDetail è il parametro di input del componente MovieDetail
+  onSelect(movie : Movie):void {
+    this.selectedMovie =  movie;
+    console.log(movie.imdbID);
+    this.movieService.getMovie(movie.imdbID);
+    console.log(this.selectedMovie)
+
+  }
 
 
 }

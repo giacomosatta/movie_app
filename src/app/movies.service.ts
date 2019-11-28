@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Movie } from './model/movie'
-import { catchError, map, tap } from 'rxjs/operators';
+import { Movie } from './movie'
+import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class MoviesService {
   private moviesUrl = 'http://www.omdbapi.com/?s=terminator&apikey=103f94fb';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type':'application/json'})
   }
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
   ) { }
-  /** Log a HeroService message with the MessageService */
+  /** Log a MovieService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`MovieService: ${message}`);
   }
 
   /**
@@ -41,26 +44,21 @@ export class MoviesService {
       return of(result as T);
     };
   }
-  //getMovies 
-  //prende tutti i film con parametro opzionale del titolo
-
-  //getMovie
-  //Prende il film con parametro id
-  getMovies(title?: string): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
+  
+  getMovies(title?: string): Observable<any> {
+    return this.http.get<any>(this.moviesUrl)
       .pipe(
         tap(_ => this.log('Fetched Movies')),
-        catchError(this.handleError<Movie[]>('getMovies', []))
+        catchError(this.handleError<any>('getMovies', []))
         
     );
   }
 
-
-  getMovie(imdbID: string): Observable<Movie> {
+  getMovie(imdbID: string): Observable<any> {
     const url = `${this.moviesUrl}/${imdbID}`;
-    return this.http.get<Movie>(url).pipe(
+    return this.http.get<any>(url).pipe(
       tap(_ => this.log(`fetched movie imdbID=${imdbID}`)),
-      catchError(this.handleError<Movie>(`getMovie imdbID=${imdbID}`))
+      catchError(this.handleError<any>(`getMovie imdbID=${imdbID}`))
     );
   }
 
