@@ -1,3 +1,6 @@
 .table{
     color:#fff;
 }
+.pointer {
+    cursor: pointer;
+}

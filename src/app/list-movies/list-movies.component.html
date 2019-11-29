@@ -5,16 +5,17 @@
         <thead class="thead-dark" *ngIf="movies">
           <tr>
             <th scope="col">Title</th>
-            <th scope="col">Genre</th>
+            <th scope="col">Year</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody >
-            <tr *ngFor = "let movie of movies">
+            <tr *ngFor = "let movie of movies" >
               <td [class.selected]="movie === selectedMovie"
-              (click)="onSelect(movie)">{{movie.Title}}</td>
+              (click)="onSelect(movie)" class="pointer">{{movie.Title}}</td>
               <td>{{movie.Year}}</td>
-              <td><img src={{movie.Poster}} height="40"></td>
+              <td class="poster"><img src={{movie.Poster}} height='40'
+                onmouseover="this.height='150'" onmouseout="this.height='40'"></td>
             </tr>
         </tbody>
       </table>

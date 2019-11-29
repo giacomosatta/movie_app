@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-from.component.css']
 })
 export class SearchFromComponent implements OnInit {
-  searchTerms : string;
+  searchTerms: string;
 
   constructor() { }
 
@@ -14,7 +14,7 @@ export class SearchFromComponent implements OnInit {
 
   }
 
-  search(term:string):void{
+  search(term: string): void {
     this.searchTerms = term;
   }
 
