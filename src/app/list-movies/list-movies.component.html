@@ -10,7 +10,7 @@
           </tr>
         </thead>
         <tbody >
-            <tr *ngFor = "let movie of movies" >
+            <tr *ngFor = "let movie of movieslist" >
               <td [class.selected]="movie === selectedMovie"
               (click)="onSelect(movie)" class="pointer">{{movie.Title}}</td>
               <td>{{movie.Year}}</td>

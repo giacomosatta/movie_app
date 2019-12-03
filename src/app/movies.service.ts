@@ -46,14 +46,11 @@ export class MoviesService {
   }
 
   getMovies(title?: string): Observable<any> {
-    if (!title.trim()) {
-      return of({})
-    }
     const url = `${this.moviedet}s=${title}`;
     return this.http.get<any>(url)
       .pipe(
         tap(_ => this.log('Fetched Movies')),
-        catchError(this.handleError<any>('getMovies', []))
+        catchError(this.handleError<any>('getMovies', {}))
 
       );
   }

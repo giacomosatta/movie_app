@@ -1,9 +1,10 @@
-<form class="form-inline">
+
   <div class="form-group mx-sm-3 mb-2">
     <label for="inputmovie" class="sr-only">Search</label>
-    <input #searchTerm (input)="search(searchTerm.value)" type="movie" class="form-control" id="inputmovie"
-      placeholder="Search your movie" onkeypress="tableInputKeyPress(event)">
+    <input #searchFilm type="movie" class="form-control form-control-lg" type="text" placeholder="Search your movie">
+    <button (click)="onClick(searchFilm.value)" type="submit"
+      class="btn btn-primary">Search</button>
   </div>
-</form>
 
-<app-list-movies [searchTerms]="searchTerms"></app-list-movies>
+
+<app-list-movies [movieslist]="movies"></app-list-movies>

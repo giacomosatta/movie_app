@@ -11,33 +11,25 @@ import { Observable } from 'rxjs';
 })
 export class ListMoviesComponent implements OnInit {
 
-  movies : Observable<any>;
-  selectedMovie : Movie;
-  currentMovieDetail : Movie;
-  term: string;
+  selectedMovie: Movie;
+  currentMovieDetail: Movie;
 
-  @Input() set searchTerms(value:string){
-  this.term = value;
-  console.log(this.term)
-  this.refreshMovies();
-}
+  @Input() movieslist: Movie[];
+
   constructor(
-    private movieService : MoviesService
+    private movieService: MoviesService
   ) { }
 
   ngOnInit() {
   }
 
-  refreshMovies = () =>{
-    this.movieService.getMovies(this.term)
-    .subscribe(data => this.movies = data.Search);
-  }
-
-  onSelect(movie : Movie):void {
+  onSelect(movie: Movie): void {
     this.movieService.getMovie(movie.imdbID)
-    .subscribe(result => this.selectedMovie = result );
+      .subscribe(result => this.selectedMovie = result);
 
   }
+
+
 
 
 }
