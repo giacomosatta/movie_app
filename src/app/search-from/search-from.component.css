@@ -6,3 +6,6 @@ background-color:
 border-color:
 #454d55;
 }
+.form-group.mx-sm-3.mb-2{
+    width: max-content;
+}

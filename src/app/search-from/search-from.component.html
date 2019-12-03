@@ -1,10 +1,16 @@
 <div class="total">
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="inputmovie" class="sr-only">Search</label>
-    <input #searchFilm type="movie" class="form-control form-control-lg" type="text" placeholder="Search your movie">
-    <button (click)="onClick(searchFilm.value)" type="submit" class="btn btn-primary">Search</button>
-  </div>
-  <div class="other">
-    <app-list-movies [movieslist]="movies"></app-list-movies>
-  </div>
+  <div class="row">
+    <div class="col1">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputmovie" class="sr-only">Search</label>
+        <input #searchFilm type="movie" class="form-control form-control-lg" type="text"
+          placeholder="Search your movie">
+      </div>
+    </div>
+      <div class="col">
+        <button (click)="onClick(searchFilm.value)" type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+
+  <app-list-movies [movieslist]="movies"></app-list-movies>
 </div>
